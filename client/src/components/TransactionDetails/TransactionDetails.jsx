@@ -1,6 +1,6 @@
 import React from "react";
 import { TransactionHistory } from "../Data";
-import TransactionDetailsTwo from "./TransaxtionDetailsTwo";
+import TransactionDetailsTwo from "./TransactionDetailsTwo";
 
 const TransactionDetails = () => {
   return (

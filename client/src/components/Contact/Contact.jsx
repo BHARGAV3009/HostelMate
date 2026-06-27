@@ -1,7 +1,7 @@
 import React from "react";
 import "./Contact.css";
 import { FiSend } from "react-icons/fi";
-import ComplaintSelectMenu from "./complaintComponent.jsx";
+import ComplaintSelectMenu from "./ComplaintComponent.jsx";
 
 const Contact = () => {
 
