@@ -1,0 +1,160 @@
+.account-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 30px;
+  font-family: "DM Sans", sans-serif;
+  box-sizing: border-box;
+}
+
+.profile-card {
+  flex: 1;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  border: 1px solid #f1f5f9;
+  max-width: 400px;
+  position: relative;
+}
+
+.profile-header {
+  background: #f8fafc;
+  padding: 20px 25px;
+  border-bottom: 1px solid #e2e8f0;
+  border-radius: 20px 20px 0 0;
+}
+
+.profile-header h2 {
+  font-size: 18px;
+  color: #0f172a;
+  margin: 0;
+}
+
+.profile-content {
+  padding: 30px 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.avatar-wrapper {
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.avatar-placeholder {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f97415, #ff8c3a);
+  color: white;
+  font-size: 40px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 4px solid white;
+  box-shadow: 0 8px 20px rgba(249, 116, 21, 0.2);
+}
+
+.status-indicator {
+  width: 16px;
+  height: 16px;
+  background-color: #22c55e;
+  border: 3px solid white;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+}
+
+.info-group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 12px 15px;
+  background: #fff7ed;
+  border-radius: 12px;
+}
+
+.info-item .icon {
+  color: #f97415;
+  font-size: 20px;
+}
+
+.info-item label {
+  display: block;
+  font-size: 11px;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.info-item h4 {
+  margin: 0;
+  color: #1e293b;
+  font-size: 15px;
+}
+
+.dropdown-item {
+  position: relative;
+  cursor: pointer;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.gender-trigger {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.chevron {
+  transition: transform 0.3s ease;
+  color: #f97415;
+}
+
+.chevron.rotated {
+  transform: rotate(180deg);
+}
+
+.gender-menu {
+  margin-top: 10px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.menu-option {
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: #475569;
+  transition: background 0.2s;
+}
+
+.menu-option:hover {
+  background: #f97415;
+  color: white;
+}
+
+@media (max-width: 480px) {
+  .account-container {
+    padding: 15px;
+  }
+  .profile-card {
+    max-width: 100%;
+  }
+}

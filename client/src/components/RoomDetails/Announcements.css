@@ -1,0 +1,30 @@
+.announcements-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.announcements-container h2 {
+  font-size: 24px;
+}
+
+.announcements-container p {
+  font-size: 16px;
+  color: #606060;
+}
+
+.notices-container {
+  width: 100%;
+  height: 30vh;
+  color: #606574;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.15);
+  border-radius: 14px;
+  margin: 10px auto;
+}
