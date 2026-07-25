@@ -14,10 +14,28 @@ const allocationRoutes = require("./routes/allocationRoutes");
 const foodRoutes = require("./routes/foodRoutes");
 const adminRoutes = require("./routes/adminRoutes");
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 5000;
+
+const allowedOrigins = (
+  process.env.CLIENT_URL || "http://localhost:5173"
+)
+  .split(",")
+  .map((origin) => origin.trim())
+  .filter(Boolean);
 
 const app = express();
-app.use(cors());
+app.use(
+  cors({
+    origin(origin, callback) {
+      // Allow non-browser tools (Postman, server-to-server) and listed frontends
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+        return;
+      }
+      callback(new Error(`CORS blocked for origin: ${origin}`));
+    },
+  }),
+);
 app.use(express.json());
 
 connectDB();

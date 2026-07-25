@@ -1,25 +1,42 @@
-import { LuCircleHelp, LuMail, LuPhone } from "react-icons/lu";
+import {
+  LuCircleHelp,
+  LuMail,
+  LuPhone,
+  LuChevronDown,
+  LuChevronUp,
+} from "react-icons/lu";
+import { useState } from "react";
 import "./StudentPages.css";
 
 export default function StudentHelp() {
   const faqs = [
     {
       question: "How do I pay my hostel fee?",
-      answer: "Navigate to the Payments section from the sidebar. You will see a list of your pending fees. Click the 'Pay Now' button next to a pending fee to complete your transaction securely."
+      answer:
+        "Navigate to the Payments section from the sidebar. You will see a list of your pending fees. Click the 'Pay Now' button next to a pending fee to complete your transaction securely.",
     },
     {
       question: "How can I raise a maintenance complaint?",
-      answer: "Go to the Complaints section, enter the details of the issue you are facing (e.g., plumbing, electrical), and click Submit. You can track the status of your complaint on the same page."
+      answer:
+        "Go to the Complaints section, enter the details of the issue you are facing (e.g., plumbing, electrical), and click Submit. You can track the status of your complaint on the same page.",
     },
     {
       question: "When is the food menu updated?",
-      answer: "The food menu is updated weekly by the hostel administration. You can view the current day's menu along with the full week schedule in the Food Menu section."
+      answer:
+        "The food menu is updated weekly by the hostel administration. You can view the current day's menu along with the full week schedule in the Food Menu section.",
     },
     {
       question: "How do I request a room change?",
-      answer: "Room changes are handled by the admin manually. Please raise a general complaint or reach out to the warden directly with your current room number and the reason for your request."
-    }
+      answer:
+        "Room changes are handled by the admin manually. Please raise a general complaint or reach out to the warden directly with your current room number and the reason for your request.",
+    },
   ];
+
+  const [activeIndex, setActiveIndex] = useState(null);
+
+  const toggleFAQ = (index) => {
+    setActiveIndex(activeIndex === index ? null : index);
+  };
 
   return (
     <div className="page-container">
@@ -33,12 +50,33 @@ export default function StudentHelp() {
           <div className="card">
             <h3 className="card-title">Frequently Asked Questions</h3>
             <div className="faq-list">
-              {faqs.map((faq, index) => (
-                <div key={index} className="faq-item">
-                  <h4>{faq.question}</h4>
-                  <p>{faq.answer}</p>
-                </div>
-              ))}
+              {faqs.map((faq, index) => {
+                const isOpen = activeIndex === index;
+                return (
+                  <div
+                    key={index}
+                    className={`faq-item ${activeIndex === index ? "active" : ""}`}
+                  >
+                    <button
+                      className="faq-question-btn"
+                      onClick={() => toggleFAQ(index)}
+                      aria-expanded={isOpen}
+                    >
+                      <h4>{faq.question}</h4>
+                      {isOpen ? (
+                        <LuChevronUp size={18} />
+                      ) : (
+                        <LuChevronDown size={18} />
+                      )}
+                    </button>
+                    {isOpen && (
+                      <div className="faq-answer">
+                        <p>{faq.answer}</p>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
@@ -46,8 +84,11 @@ export default function StudentHelp() {
         <div className="help-sidebar">
           <div className="card contact-card">
             <h3 className="card-title">Contact Administration</h3>
-            <p>If you can't find the answer to your question, feel free to reach out to the hostel admin directly.</p>
-            
+            <p>
+              If you can't find the answer to your question, feel free to reach
+              out to the hostel admin directly.
+            </p>
+
             <div className="contact-info">
               <div className="contact-item">
                 <LuMail size={18} />

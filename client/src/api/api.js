@@ -1,4 +1,5 @@
-const API_BASE = "http://localhost:5000/api";
+const API_BASE =
+  import.meta.env.VITE_API_BASE_URL || "http://localhost:5000/api";
 
 const getAuthHeaders = () => {
   const token = localStorage.getItem("authToken");
@@ -38,7 +39,9 @@ export const loginWithGoogle = (credential) =>
   }).then(handleResponse);
 
 export const getProfile = () =>
-  fetch(`${API_BASE}/auth/profile`, { headers: getAuthHeaders() }).then(handleResponse);
+  fetch(`${API_BASE}/auth/profile`, { headers: getAuthHeaders() }).then(
+    handleResponse,
+  );
 
 export const updateProfile = (data) =>
   fetch(`${API_BASE}/auth/profile`, {
@@ -48,10 +51,14 @@ export const updateProfile = (data) =>
   }).then(handleResponse);
 
 export const getMyRoom = () =>
-  fetch(`${API_BASE}/student/room`, { headers: getAuthHeaders() }).then(handleResponse);
+  fetch(`${API_BASE}/student/room`, { headers: getAuthHeaders() }).then(
+    handleResponse,
+  );
 
 export const getStudentNotices = () =>
-  fetch(`${API_BASE}/student/notices`, { headers: getAuthHeaders() }).then(handleResponse);
+  fetch(`${API_BASE}/student/notices`, { headers: getAuthHeaders() }).then(
+    handleResponse,
+  );
 
 export const createStudentComplaint = (issue) =>
   fetch(`${API_BASE}/student/complaints`, {
@@ -61,10 +68,14 @@ export const createStudentComplaint = (issue) =>
   }).then(handleResponse);
 
 export const getMyComplaints = () =>
-  fetch(`${API_BASE}/student/complaints`, { headers: getAuthHeaders() }).then(handleResponse);
+  fetch(`${API_BASE}/student/complaints`, { headers: getAuthHeaders() }).then(
+    handleResponse,
+  );
 
 export const getMyPayments = () =>
-  fetch(`${API_BASE}/student/payments`, { headers: getAuthHeaders() }).then(handleResponse);
+  fetch(`${API_BASE}/student/payments`, { headers: getAuthHeaders() }).then(
+    handleResponse,
+  );
 
 export const payFee = (id) =>
   fetch(`${API_BASE}/student/payments/${id}/pay`, {
@@ -76,10 +87,14 @@ export const getFoodMenu = () =>
   fetch(`${API_BASE}/food`, { headers: getAuthHeaders() }).then(handleResponse);
 
 export const getAdminStats = () =>
-  fetch(`${API_BASE}/admin/stats`, { headers: getAuthHeaders() }).then(handleResponse);
+  fetch(`${API_BASE}/admin/stats`, { headers: getAuthHeaders() }).then(
+    handleResponse,
+  );
 
 export const getStudents = () =>
-  fetch(`${API_BASE}/users/students`, { headers: getAuthHeaders() }).then(handleResponse);
+  fetch(`${API_BASE}/users/students`, { headers: getAuthHeaders() }).then(
+    handleResponse,
+  );
 
 export const createStudent = (data) =>
   fetch(`${API_BASE}/users/students`, {
@@ -102,7 +117,9 @@ export const deleteStudent = (id) =>
   }).then(handleResponse);
 
 export const getRooms = () =>
-  fetch(`${API_BASE}/rooms/all`, { headers: getAuthHeaders() }).then(handleResponse);
+  fetch(`${API_BASE}/rooms/all`, { headers: getAuthHeaders() }).then(
+    handleResponse,
+  );
 
 export const createRoom = (data) =>
   fetch(`${API_BASE}/rooms/create`, {
@@ -125,7 +142,9 @@ export const deleteRoom = (id) =>
   }).then(handleResponse);
 
 export const getAllAllocations = () =>
-  fetch(`${API_BASE}/allocations/all`, { headers: getAuthHeaders() }).then(handleResponse);
+  fetch(`${API_BASE}/allocations/all`, { headers: getAuthHeaders() }).then(
+    handleResponse,
+  );
 
 export const assignRoom = (userId, roomId) =>
   fetch(`${API_BASE}/allocations/assign`, {
@@ -141,7 +160,9 @@ export const deallocateRoom = (id) =>
   }).then(handleResponse);
 
 export const getAllComplaints = () =>
-  fetch(`${API_BASE}/complaints/all`, { headers: getAuthHeaders() }).then(handleResponse);
+  fetch(`${API_BASE}/complaints/all`, { headers: getAuthHeaders() }).then(
+    handleResponse,
+  );
 
 export const updateComplaintStatus = (id, status) =>
   fetch(`${API_BASE}/complaints/update/${id}`, {
@@ -157,7 +178,9 @@ export const deleteComplaint = (id) =>
   }).then(handleResponse);
 
 export const getAllPayments = () =>
-  fetch(`${API_BASE}/payments/all`, { headers: getAuthHeaders() }).then(handleResponse);
+  fetch(`${API_BASE}/payments/all`, { headers: getAuthHeaders() }).then(
+    handleResponse,
+  );
 
 export const createPayment = (data) =>
   fetch(`${API_BASE}/payments/new`, {
@@ -173,7 +196,9 @@ export const deletePayment = (id) =>
   }).then(handleResponse);
 
 export const getAllNotices = () =>
-  fetch(`${API_BASE}/notices/all`, { headers: getAuthHeaders() }).then(handleResponse);
+  fetch(`${API_BASE}/notices/all`, { headers: getAuthHeaders() }).then(
+    handleResponse,
+  );
 
 export const createNotice = (data) =>
   fetch(`${API_BASE}/notices/new`, {

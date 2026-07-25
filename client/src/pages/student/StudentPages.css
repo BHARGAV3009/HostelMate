@@ -1,4 +1,3 @@
-
 .dashboard-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
@@ -369,6 +368,18 @@
   color: var(--text-secondary);
   font-size: 0.9rem;
   line-height: 1.5;
+}
+
+.faq-question-btn {
+  background: none;
+  border: none;
+  color: var(--primary);
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .contact-card .contact-info {
