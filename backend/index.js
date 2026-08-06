@@ -22,22 +22,33 @@ const allowedOrigins = [
 ];
 
 const app = express();
+// ✅ REPLACED: Allows your production domain, local machine, AND any dynamic Vercel preview link
+const app = express();
+
 app.use(
   cors({
     origin: function (origin, callback) {
+      // Allow server-to-server or Postman requests
       if (!origin) return callback(null, true);
 
-      if (allowedOrigins.indexOf(origin) !== -1) {
+      const isLocalhost = origin.startsWith("http://localhost:");
+      const isProductionVercel =
+        origin === "https://hostel-mate-two.vercel.app";
+      const isVercelPreview =
+        origin.endsWith(".vercel.app") && origin.includes("hostel-mate");
+
+      if (isLocalhost || isProductionVercel || isVercelPreview) {
         callback(null, true);
       } else {
-        callback(new Error("Not allowed by CORS"));
+        callback(new Error(`CORS blocked for origin: ${origin}`));
       }
     },
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["COntent-Type", "Authorization"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   }),
 );
+
 app.use(express.json());
 
 connectDB();
