@@ -25,26 +25,11 @@ const app = express();
 
 app.use(
   cors({
-    origin: function (origin, callback) {
-      
-      if (!origin) return callback(null, true);
-
-      const isLocalhost = origin.startsWith("http://localhost:");
-      const isProductionVercel =
-        origin === "https://hostel-mate-two.vercel.app";
-      const isVercelPreview =
-        origin.endsWith(".vercel.app") && origin.includes("hostel-mate");
-
-      if (isLocalhost || isProductionVercel || isVercelPreview) {
-        callback(null, true);
-      } else {
-        callback(new Error(`CORS blocked for origin: ${origin}`));
-      }
-    },
+    origin: allowedOrigins,
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
-  }),
+  })
 );
 
 app.use(express.json());
