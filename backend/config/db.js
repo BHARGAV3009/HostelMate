@@ -6,7 +6,7 @@ const connectDB = async () => {
     console.log("MongoDB connected Successfully");
   } catch (error) {
     console.error("MongoDB connection failed", error.message);
-    // process.exit(1); // Removed to prevent 502 Bad Gateway if DB is temporarily unreachable
+    
   }
 };
 
