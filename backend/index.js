@@ -22,13 +22,11 @@ const allowedOrigins = [
 ];
 
 const app = express();
-// ✅ REPLACED: Allows your production domain, local machine, AND any dynamic Vercel preview link
-const app = express();
 
 app.use(
   cors({
     origin: function (origin, callback) {
-      // Allow server-to-server or Postman requests
+      
       if (!origin) return callback(null, true);
 
       const isLocalhost = origin.startsWith("http://localhost:");
