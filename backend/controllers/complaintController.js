@@ -1,13 +1,5 @@
 const Complaint = require("../models/Complaint");
 
-exports.createComplaint = async (req, res) => {
-  try {
-    const complaint = await Complaint.create(req.body);
-    res.status(201).json(complaint);
-  } catch (error) {
-    res.status(500).json({ message: "Error creating complaint", error });
-  }
-};
 
 exports.getAllComplaints = async (req, res) => {
   try {

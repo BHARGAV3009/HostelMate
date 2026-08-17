@@ -12,7 +12,7 @@ const roleMiddleware = require("../middleware/roleMiddleware");
 
 router.get("/all", authMiddleware, roleMiddleware("admin"), getPayments);
 router.post("/new", authMiddleware, roleMiddleware("admin"), createPayment);
-router.get("/:id", authMiddleware, getPaymentById);
+router.get("/:id", authMiddleware, roleMiddleware("admin"), getPaymentById);
 router.delete("/delete/:id", authMiddleware, roleMiddleware("admin"), deletePayment);
 
 module.exports = router;

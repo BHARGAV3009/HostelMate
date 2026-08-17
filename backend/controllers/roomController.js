@@ -34,10 +34,17 @@ exports.updateRoom = async (req, res) => {
 
 exports.deleteRoom = async (req, res) => {
   try {
-    const room = await Room.findByIdAndDelete(req.params.id);
+    const room = await Room.findById(req.params.id);
     if (!room) {
       return res.status(404).json({ message: "Room not found" });
     }
+
+    // A room with active students should not be deleted directly.
+    if (room.occupied > 0) {
+      return res.status(400).json({ message: "Cannot delete a room with active allocations" });
+    }
+
+    await Room.findByIdAndDelete(req.params.id);
     res.status(200).json({ message: "Room deleted successfully" });
   } catch (error) {
     res.status(500).json({ message: "Error deleting room", error });

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import {
@@ -5,12 +6,15 @@ import {
 } from "react-icons/bi";
 import { MdAccountBalanceWallet } from "react-icons/md";
 import { LuMessageSquare, LuBell, LuUsers, LuLogOut, LuUtensilsCrossed, LuDoorOpen, LuCreditCard, LuLayoutDashboard } from "react-icons/lu";
-import { Building2 } from "lucide-react";
+import { Building2, Menu, X } from "lucide-react";
 import "./StudentLayout.css";
 
 export default function AdminLayout() {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const closeSidebar = () => setIsSidebarOpen(false);
 
   const handleLogout = () => {
     logout();
@@ -30,7 +34,20 @@ export default function AdminLayout() {
 
   return (
     <div className="layout">
-      <aside className="sidebar">
+      <div className="mobile-header-bar">
+        <div className="mobile-brand">
+          <Building2 size={22} />
+          <span className="brand-text" style={{fontSize: '1.1rem', fontWeight: 700}}>HostelMate</span>
+          <span style={{fontSize: '0.6rem', background: 'var(--primary)', color: 'white', padding: '2px 8px', borderRadius: 12, fontWeight: 700, marginLeft: 4}}>ADMIN</span>
+        </div>
+        <button className="mobile-menu-btn" onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
+          {isSidebarOpen ? <X size={26} /> : <Menu size={26} />}
+        </button>
+      </div>
+
+      {isSidebarOpen && <div className="sidebar-overlay" onClick={closeSidebar}></div>}
+
+      <aside className={`sidebar ${isSidebarOpen ? 'open' : ''}`}>
         <div className="sidebar-brand">
           <div className="brand-icon">
             <Building2 size={22} />
@@ -48,6 +65,7 @@ export default function AdminLayout() {
               className={({ isActive }) =>
                 `nav-item ${isActive ? "active" : ""}`
               }
+              onClick={closeSidebar}
             >
               <Icon size={19} />
               <span>{label}</span>

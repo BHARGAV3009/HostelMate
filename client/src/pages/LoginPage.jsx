@@ -102,62 +102,7 @@ const LoginPage = () => {
         <form className="auth-form" onSubmit={handleSubmit}>
           {!isLogin && (
             <>
-              <div className="input-group">
-                <label>Sign Up As</label>
-                <div
-                  className="radio-group"
-                  style={{ display: "flex", gap: "20px", marginTop: "8px" }}
-                >
-                  <label
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "8px",
-                      cursor: "pointer",
-                      fontWeight: 500,
-                      color: "#1e293b",
-                    }}
-                  >
-                    <input
-                      type="radio"
-                      name="role"
-                      value="student"
-                      checked={formData.role === "student"}
-                      onChange={handleChange}
-                      disabled={loading}
-                      style={{
-                        accentColor: "#f97415",
-                        transform: "scale(1.2)",
-                      }}
-                    />
-                    Student
-                  </label>
-                  <label
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "8px",
-                      cursor: "pointer",
-                      fontWeight: 500,
-                      color: "#1e293b",
-                    }}
-                  >
-                    <input
-                      type="radio"
-                      name="role"
-                      value="admin"
-                      checked={formData.role === "admin"}
-                      onChange={handleChange}
-                      disabled={loading}
-                      style={{
-                        accentColor: "#f97415",
-                        transform: "scale(1.2)",
-                      }}
-                    />
-                    Admin
-                  </label>
-                </div>
-              </div>
+
 
               <div className="input-group">
                 <label>Full Name</label>

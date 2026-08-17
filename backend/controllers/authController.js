@@ -43,7 +43,7 @@ exports.login = async (req, res) => {
 
 exports.signup = async (req, res) => {
   try {
-    const { name, email, password, phoneNumber, role } = req.body;
+    const { name, email, password, phoneNumber } = req.body;
 
     if (!name?.trim() || !email?.trim() || !password?.trim()) {
       return res.status(400).json({ message: "Name, email and password are required" });
@@ -56,7 +56,9 @@ exports.signup = async (req, res) => {
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const userRole = role === "admin" ? "admin" : "student";
+    // Public signup should never accept the role from the client.
+    // Otherwise anyone could create an admin account.
+    const userRole = "student";
 
     const user = await User.create({
       name: name.trim(),
